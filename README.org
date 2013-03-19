@@ -1,0 +1,61 @@
+* sometimes you need to validate data
+* not everyone needs it
+  so fussless-data is by default [schemaless][]
+* Schema as you want
+** never schema at all? go enjoy fussless-data and stop wasting your time here.
+** Need a schema for every kidn of file you ever make? no problem.
+** you may have you own definition of a need basis, you're welcome.
+** really, its a tool
+*** I have personally loved the schemaless nature of JSON sometimes
+*** but when I wanted a [JSON schema][] it was frustrating.
+* fussless-data-schema is a way of defining schemas for fussless-data files
+* fussless-data-schemas are just plain fussless-data files
+** so you already know how to write them and already find that easy to write and read.
+* You have a fussless-data-meta-schema
+** so you can validate that a given fussless-data-schema file is a valid fussless-data-schema
+** yes, of course it validates itself!
+* Duck validation
+  Like [Duck Typing][] but for validation
+** a single fussless-data message can validate to any number of different schemas
+   "if it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck"
+** the message has no knowledge of its types
+** if the message has the entities as specified it is valid
+*** unkown entities and their children: ignored
+**** this allows duck validation, as a single structure may contain the entities for multiple kinds of documents
+**** this allow futureproofing, a newer version of your spec that only add stuff is also valid for older versions
+***** this is way CSS ignores unkown stuff
+**** just ignore them while parsing too
+***** cant do that? really hates the idea?
+****** ok you can opt out, the reference validator will have an optioal strict mode that only accepts fully validating 
+**** dont
+** everything defaults to optional
+*** so a message that validates two types is an intersection of the two
+**** and the empty message is a valid intersection of all types that have no mandatory entities
+** one can define an entity to contain a fussless-data file
+*** you can set it to any fussless-data file and essentially say that you ignore everything child of that entity.
+*** you can list other URIs to other fussless-data-schema, this will mean that the children need to validate one of those schema for the parent to be valid
+*** yes, this pretty much give you namespaces for free.
+* you can go crazy with it
+** want inheritance?
+   exploit duck typing to achieve that!
+**  
+* validators
+** TODO shoudl be its own fussless-data-validator project
+** cucumber specs
+** should default to standard error messages
+** should default to English
+** should default to duck validation
+** should offer strict validation
+* CopyRight
+Copyright 2013 Romeu “Malk’Zameth” MOURA
+This file is part of fussless-data-schema. fussless-data-schema is free software: you can
+redistribute it and/or modify it under the terms of the GNU General
+Public License as published by the Free Software Foundation, either
+version 3 of the License, or (at your option) any later version. fussless-data-schema is
+distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+You should have received a copy of the GNU General Public License along
+with fussless-data-schema. If not, see <http://www.gnu.org/licenses/>.
+
+

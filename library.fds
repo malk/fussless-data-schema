@@ -1,0 +1,21 @@
+library [
+  sched [
+    book [
+      author [
+        fussless-data "http://example.com/person.ms"
+      ]
+   ISBN [
+         string
+         ]
+   ]]]
+
+
+; "Children inherit properties"
+; "mandatory nodes with parents kinda imply parents must exist"
+; "nodes of type fussless-data cannot have children, can be mandatory, any other property is an error"
+; "all types null: everything allowed; otherwise null defaults to false"
+; "collorary: explicitly listing types whitelist those types"
+;"regexp needs a string as argument, the regexp itself, and only validates""
+; if every CONTENT inside the entity is 
+                                        ;; beware of regexping and the escaped characters
+"
